@@ -1,10 +1,9 @@
 import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.30"
-    id("org.jetbrains.compose") version "1.0.0-alpha4-build331"
+    id("org.jetbrains.compose") version "1.0.0-alpha4-build348"
 }
 
 group = "com.hyosakura"
@@ -25,7 +24,8 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile>() {
+tasks.compileKotlin {
+    kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     kotlinOptions.jvmTarget = "16"
 }
 
